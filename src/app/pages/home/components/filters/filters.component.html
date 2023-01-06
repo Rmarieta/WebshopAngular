@@ -1,0 +1,18 @@
+<mat-expansion-panel
+  hideToggle
+  [expanded]="true"
+  *ngIf="categories"
+  class="bg-[#e6e6e6]"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> CATEGORIES </mat-panel-title>
+    <mat-icon>expand_more</mat-icon>
+  </mat-expansion-panel-header>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let category of categories" [value]="category">
+      <button (click)="onShowCategory(category)">
+        {{ category | titlecase }}
+      </button>
+    </mat-list-option>
+  </mat-selection-list>
+</mat-expansion-panel>

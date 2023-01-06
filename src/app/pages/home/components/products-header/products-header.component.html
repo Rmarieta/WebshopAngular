@@ -1,0 +1,90 @@
+<mat-card class="mb-4 shadow-none">
+  <div class="flex justify-between p-4 bg-[#c1d6ff] rounded h-[80px]">
+    <div>
+      <mat-expansion-panel hideToggle class="bg-[#c1d6ff] z-10">
+        <mat-expansion-panel-header>
+          <mat-panel-title> SORT BY '{{ sort | titlecase }}' </mat-panel-title>
+          <mat-icon>expand_more</mat-icon>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option
+            *ngFor="let sorting of ['desc', 'asc']"
+            [value]="sorting"
+          >
+            <button (click)="onSortUpdated(sorting)">
+              {{ sorting | titlecase }}
+            </button>
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+    </div>
+    <div class="flex">
+      <div class="mr-2">
+        <mat-expansion-panel hideToggle class="bg-[#c1d6ff] z-20">
+          <mat-expansion-panel-header>
+            <mat-panel-title> SHOW {{ itemsShowCount }}</mat-panel-title>
+            <mat-icon>expand_more</mat-icon>
+          </mat-expansion-panel-header>
+          <mat-selection-list [multiple]="false">
+            <mat-list-option
+              *ngFor="let itemCount of [12, 24, 36]"
+              [value]="itemCount"
+            >
+              <button (click)="onItemsUpdated(itemCount)">
+                {{ itemCount }}
+              </button>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-expansion-panel>
+      </div>
+      <div class="m-auto">
+        <button (click)="onColumnsUpdated(1)">
+          <mat-icon>view_list</mat-icon>
+        </button>
+        <button (click)="onColumnsUpdated(3)">
+          <mat-icon>view_module</mat-icon>
+        </button>
+        <button (click)="onColumnsUpdated(4)">
+          <mat-icon>view_comfy</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<!-- <mat-card class="mb-4 shadow-none">
+  <div class="flex justify-between p-4 bg-[#c1d6ff] rounded">
+    <div>
+      <button mat-button [matMenuTriggerFor]="sortByMenu">
+        SORT BY '{{ sort | uppercase }}'
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu class="bg-[#c1d6ff]" #sortByMenu="matMenu">
+        <button mat-menu-item (click)="onSortUpdated('desc')">DESC</button>
+        <button mat-menu-item (click)="onSortUpdated('asc')">ASC</button>
+      </mat-menu>
+    </div>
+    <div class="flex items-center">
+      <div class="pr-4">
+        <button mat-button [matMenuTriggerFor]="menu">
+          SHOW {{ itemsShowCount }}
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu class="bg-[#c1d6ff]" #menu="matMenu">
+          <button mat-menu-item (click)="onItemsUpdated(12)">12</button>
+          <button mat-menu-item (click)="onItemsUpdated(24)">24</button>
+          <button mat-menu-item (click)="onItemsUpdated(36)">36</button>
+        </mat-menu>
+      </div>
+      <button (click)="onColumnsUpdated(1)">
+        <mat-icon>view_list</mat-icon>
+      </button>
+      <button (click)="onColumnsUpdated(3)">
+        <mat-icon>view_module</mat-icon>
+      </button>
+      <button (click)="onColumnsUpdated(4)">
+        <mat-icon>view_comfy</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card> -->
